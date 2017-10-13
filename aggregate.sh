@@ -19,7 +19,7 @@ do
   case "$file" in 
   *${REGREX}*)
 #echo $file
-     awk 'NR >=4 { 
+     awk 'NR >=6 { 
                    count++;
                    rate += $3;
                    mean += $4;
