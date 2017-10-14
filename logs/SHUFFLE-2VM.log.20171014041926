@@ -1,0 +1,60 @@
+Experiments begin at 20171014041926
+Running: /usr/share/jdk1.8.0_131/bin/java -client -Ddaemon.name= -Dstorm.options=topology.workers%3D2 -Dstorm.home=/tmp/apache-storm-2.0.0-SNAPSHOT -Dstorm.log.dir=/tmp/apache-storm-2.0.0-SNAPSHOT/logs -Djava.library.path=/usr/local/lib:/opt/local/lib:/usr/lib:/usr/lib64 -Dstorm.conf.file= -cp /tmp/apache-storm-2.0.0-SNAPSHOT/*:/tmp/apache-storm-2.0.0-SNAPSHOT/lib/*:/tmp/apache-storm-2.0.0-SNAPSHOT/extlib/*:/tmp/storm-loadgen-2.0.0-SNAPSHOT.jar:/tmp/apache-storm-2.0.0-SNAPSHOT/conf:/tmp/apache-storm-2.0.0-SNAPSHOT/bin -Dstorm.jar=/tmp/storm-loadgen-2.0.0-SNAPSHOT.jar -Dstorm.dependency.jars= -Dstorm.dependency.artifacts={} org.apache.storm.loadgen.ThroughputVsLatency --spouts 2 --splitters 2 --counters 2 --rate 10000 --reporter TSV:/home/ethanli/STORM-2686-perf-study/raw-results/SHUFFLE/20171014041926/2vm2spout2splitter2counter10000r.20171014041926
+04:19:29.249 [main] INFO  o.e.j.s.Server - jetty-7.6.13.v20130916
+04:19:29.291 [main] INFO  o.e.j.s.h.ContextHandler - started o.e.j.s.ServletContextHandler{/,null}
+04:19:29.306 [main] INFO  o.e.j.s.AbstractConnector - Started SelectChannelConnector@0.0.0.0:36292
+04:19:29.365 [main] INFO  o.a.s.u.NimbusClient - Found leader nimbus : persistmist.corp.ne1.yahoo.com:6627
+04:19:29.445 [main] INFO  o.a.s.StormSubmitter - Generated ZooKeeper secret payload for MD5-digest: -9184531700435230674:-6928453126735892480
+04:19:29.530 [main] WARN  o.a.s.v.ConfigValidation - storm.messaging.netty.max_retries is a deprecated config please see class org.apache.storm.Config.STORM_MESSAGING_NETTY_MAX_RETRIES for more information.
+04:19:29.563 [main] INFO  o.a.s.u.NimbusClient - Found leader nimbus : persistmist.corp.ne1.yahoo.com:6627
+04:19:29.564 [main] INFO  o.a.s.s.a.AuthUtils - Got AutoCreds []
+04:19:29.575 [main] INFO  o.a.s.u.NimbusClient - Found leader nimbus : persistmist.corp.ne1.yahoo.com:6627
+04:19:29.594 [main] INFO  o.a.s.StormSubmitter - Uploading dependencies - jars...
+04:19:29.595 [main] INFO  o.a.s.StormSubmitter - Uploading dependencies - artifacts...
+04:19:29.595 [main] INFO  o.a.s.StormSubmitter - Dependency Blob keys - jars : [] / artifacts : []
+04:19:29.629 [main] INFO  o.a.s.StormSubmitter - Uploading topology jar /tmp/storm-loadgen-2.0.0-SNAPSHOT.jar to assigned location: /tmp/apache-storm-2.0.0-SNAPSHOT/storm-local/nimbus/inbox/stormjar-618b11ab-be48-4185-9f3d-0ae555feacda.jar
+04:19:29.688 [main] INFO  o.a.s.StormSubmitter - Successfully uploaded topology jar to assigned location: /tmp/apache-storm-2.0.0-SNAPSHOT/storm-local/nimbus/inbox/stormjar-618b11ab-be48-4185-9f3d-0ae555feacda.jar
+04:19:29.688 [main] INFO  o.a.s.StormSubmitter - Submitting topology wc-test in distributed mode with conf {"topology.worker.metrics":{"CPU":"org.apache.storm.metrics.sigar.CPUMetric"},"storm.zookeeper.topology.auth.scheme":"digest","topology.worker.gc.childopts":"-XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:NewSize=128m -XX:CMSInitiatingOccupancyFraction=70 -XX:-CMSConcurrentMTEnabled","topology.workers":2,"topology.builtin.metrics.bucket.size.secs":10,"topology.worker.childopts":"-Xmx2g","storm.zookeeper.topology.auth.payload":"-9184531700435230674:-6928453126735892480","topology.metrics.consumer.register":[{"argument":null,"class":"org.apache.storm.metric.LoggingMetricsConsumer","parallelism.hint":1},{"argument":"http:\/\/persistmist.corp.ne1.yahoo.com:36292\/","class":"org.apache.storm.loadgen.HttpForwardingMetricsConsumer","parallelism.hint":1}]}
+04:19:30.108 [main] INFO  o.a.s.StormSubmitter - Finished submitting topology: wc-test
+ start_time(s)    end_time(s)  rate(tuple/s)       mean(ms)     99%ile(ms)   99.9%ile(ms)          cores        mem(MB)         failed            ids      congested
+             0             30      6,673.100         18.689        314.835        544.211          2.105        182.082              0 [wc-test-1-1507954769]             {}
+            30             60     10,000.933          8.647         13.246         40.403          1.443        158.356              0 [wc-test-1-1507954769]             {}
+            60             90     10,000.067          8.435         12.657         34.374          1.408        137.964              0 [wc-test-1-1507954769]             {}
+            90            120     10,000.700          8.324         12.132         14.942          1.396        112.469              0 [wc-test-1-1507954769]             {}
+           120            150      9,999.900          8.526         12.517         36.110          1.478         83.265              0 [wc-test-1-1507954769]             {}
+           150            180     10,000.367          8.494         12.788         39.485          1.532         53.648              0 [wc-test-1-1507954769]             {}
+           180            210      9,999.733          8.510         12.411         26.214          1.383        114.015              0 [wc-test-1-1507954769]             {}
+           210            240      9,999.800          8.563         12.599         32.293          1.405         81.404              0 [wc-test-1-1507954769]             {}
+           240            270     10,000.133          8.504         12.444         33.686          1.373        125.570              0 [wc-test-1-1507954769]             {}
+           270            300     10,000.400          8.366         12.239         21.823          1.376        175.763              0 [wc-test-1-1507954769]             {}
+RESULTS SAVED AT /home/ethanli/STORM-2686-perf-study/raw-results/SHUFFLE/20171014041926/2vm2spout2splitter2counter10000r.20171014041926
+Running: /usr/share/jdk1.8.0_131/bin/java -client -Ddaemon.name= -Dstorm.options=topology.workers%3D8 -Dstorm.home=/tmp/apache-storm-2.0.0-SNAPSHOT -Dstorm.log.dir=/tmp/apache-storm-2.0.0-SNAPSHOT/logs -Djava.library.path=/usr/local/lib:/opt/local/lib:/usr/lib:/usr/lib64 -Dstorm.conf.file= -cp /tmp/apache-storm-2.0.0-SNAPSHOT/*:/tmp/apache-storm-2.0.0-SNAPSHOT/lib/*:/tmp/apache-storm-2.0.0-SNAPSHOT/extlib/*:/tmp/storm-loadgen-2.0.0-SNAPSHOT.jar:/tmp/apache-storm-2.0.0-SNAPSHOT/conf:/tmp/apache-storm-2.0.0-SNAPSHOT/bin -Dstorm.jar=/tmp/storm-loadgen-2.0.0-SNAPSHOT.jar -Dstorm.dependency.jars= -Dstorm.dependency.artifacts={} org.apache.storm.loadgen.ThroughputVsLatency --spouts 8 --splitters 8 --counters 8 --rate 10000 --reporter TSV:/home/ethanli/STORM-2686-perf-study/raw-results/SHUFFLE/20171014041926/2vm8spout8splitter8counter10000r.20171014042431
+04:24:33.814 [main] INFO  o.e.j.s.Server - jetty-7.6.13.v20130916
+04:24:33.859 [main] INFO  o.e.j.s.h.ContextHandler - started o.e.j.s.ServletContextHandler{/,null}
+04:24:33.875 [main] INFO  o.e.j.s.AbstractConnector - Started SelectChannelConnector@0.0.0.0:38076
+04:24:33.927 [main] INFO  o.a.s.u.NimbusClient - Found leader nimbus : persistmist.corp.ne1.yahoo.com:6627
+04:24:34.008 [main] INFO  o.a.s.StormSubmitter - Generated ZooKeeper secret payload for MD5-digest: -8507620862098715521:-5190531395495970168
+04:24:34.099 [main] WARN  o.a.s.v.ConfigValidation - storm.messaging.netty.max_retries is a deprecated config please see class org.apache.storm.Config.STORM_MESSAGING_NETTY_MAX_RETRIES for more information.
+04:24:34.132 [main] INFO  o.a.s.u.NimbusClient - Found leader nimbus : persistmist.corp.ne1.yahoo.com:6627
+04:24:34.132 [main] INFO  o.a.s.s.a.AuthUtils - Got AutoCreds []
+04:24:34.141 [main] INFO  o.a.s.u.NimbusClient - Found leader nimbus : persistmist.corp.ne1.yahoo.com:6627
+04:24:34.154 [main] INFO  o.a.s.StormSubmitter - Uploading dependencies - jars...
+04:24:34.154 [main] INFO  o.a.s.StormSubmitter - Uploading dependencies - artifacts...
+04:24:34.155 [main] INFO  o.a.s.StormSubmitter - Dependency Blob keys - jars : [] / artifacts : []
+04:24:34.160 [main] INFO  o.a.s.StormSubmitter - Uploading topology jar /tmp/storm-loadgen-2.0.0-SNAPSHOT.jar to assigned location: /tmp/apache-storm-2.0.0-SNAPSHOT/storm-local/nimbus/inbox/stormjar-81ca475c-f584-4e6b-a911-dd3d706e2ae5.jar
+04:24:34.202 [main] INFO  o.a.s.StormSubmitter - Successfully uploaded topology jar to assigned location: /tmp/apache-storm-2.0.0-SNAPSHOT/storm-local/nimbus/inbox/stormjar-81ca475c-f584-4e6b-a911-dd3d706e2ae5.jar
+04:24:34.202 [main] INFO  o.a.s.StormSubmitter - Submitting topology wc-test in distributed mode with conf {"topology.worker.metrics":{"CPU":"org.apache.storm.metrics.sigar.CPUMetric"},"storm.zookeeper.topology.auth.scheme":"digest","topology.worker.gc.childopts":"-XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:NewSize=128m -XX:CMSInitiatingOccupancyFraction=70 -XX:-CMSConcurrentMTEnabled","topology.workers":8,"topology.builtin.metrics.bucket.size.secs":10,"topology.worker.childopts":"-Xmx2g","storm.zookeeper.topology.auth.payload":"-8507620862098715521:-5190531395495970168","topology.metrics.consumer.register":[{"argument":null,"class":"org.apache.storm.metric.LoggingMetricsConsumer","parallelism.hint":1},{"argument":"http:\/\/persistmist.corp.ne1.yahoo.com:38076\/","class":"org.apache.storm.loadgen.HttpForwardingMetricsConsumer","parallelism.hint":1}]}
+04:24:34.322 [main] INFO  o.a.s.StormSubmitter - Finished submitting topology: wc-test
+ start_time(s)    end_time(s)  rate(tuple/s)       mean(ms)     99%ile(ms)   99.9%ile(ms)          cores        mem(MB)         failed            ids      congested
+             0             30          0.000          0.000          0.000          0.000          0.000          0.000              0 [wc-test-2-1507955074]             {}
+            30             61     10,913.774      5,147.152     20,703.085     24,998.052         10.065        623.926              0 [wc-test-2-1507955074] {wc-test-2-1507955074:split:19=receive 1024/1024, wc-test-2-1507955074:count:11=receive 954/1024}
+            61             92      9,680.774         15.158         37.454         57.573          4.321        583.566              0 [wc-test-2-1507955074]             {}
+            92            122      9,999.933         13.961         26.477         35.226          4.058        736.650              0 [wc-test-2-1507955074]             {}
+           122            152     10,000.100         13.853         26.034         39.846          4.053        721.192              0 [wc-test-2-1507955074]             {}
+           152            182     10,000.100         13.844         26.870         37.356          4.008        393.038              0 [wc-test-2-1507955074]             {}
+           182            212      9,999.800         13.803         26.444         36.078          4.022        566.649              0 [wc-test-2-1507955074]             {}
+           212            242     10,000.833         13.758         25.625         35.619          4.180        554.571              0 [wc-test-2-1507955074]             {}
+           242            272     10,000.367         13.685         24.953         32.850          4.205        439.447              0 [wc-test-2-1507955074]             {}
+           272            302     10,000.167         13.728         25.641         35.226          3.995        630.102              0 [wc-test-2-1507955074]             {}
+RESULTS SAVED AT /home/ethanli/STORM-2686-perf-study/raw-results/SHUFFLE/20171014041926/2vm8spout8splitter8counter10000r.20171014042431
+Experiments end at 20171014042936
