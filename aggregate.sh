@@ -26,7 +26,7 @@ for file in "$ROOT_DIR"/*
 do
   case "$file" in 
   *${REGREX}*)
-echo $file
+#echo $file
      awk -v skip="$SKIP_NR" 'NR >=skip { 
                    count++;
                    rate += $3;
